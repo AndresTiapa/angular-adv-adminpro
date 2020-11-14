@@ -7,17 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgressComponent implements OnInit {
 
-  progresoHtml: number = 50;
+  progreso1 : number = 15;
+  progreso2 : number = 85;
 
-  cambiaProgreso (valor : number) {
-    console.log("cambia progreso: " + valor);
-    this.progresoHtml = this.progresoHtml + valor;
-    this.progresoHtml < 0 ? this.progresoHtml = 0 : this.progresoHtml;
-    this.progresoHtml > 100 ? this.progresoHtml = 100 :this.progresoHtml;
+  get valorH1() {
+    return `${this.progreso1}%`
   }
-
-  get getProgreso () {
-    return `${this.progresoHtml}%`;
+  get valorH2() {
+    return `${this.progreso2}%`
   }
 
 

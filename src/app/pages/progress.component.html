@@ -1,17 +1,33 @@
 <div class="row">
-    <div class="col-6">
+    <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <p>Mi progress 1</p>
                 <div class="card-body">
-                    <h4 class="card-title">Striped Progress bar </h4>
+                    <h4 class="card-title">Striped Progress bar 1</h4>
                     <div class="progress m-t-20">
-                        <div class="progress-bar bg-info progress-bar-striped  active" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style=" height:10px;" role="progressbar" [style.width]="getProgreso">
-                            <span class="sr-only">85% Complete (success)</span>
+                        <div class="progress-bar bg-info progress-bar-striped  active" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style=" height:10px;" role="progressbar" [style.width]="valorH1">
+                            <!-- [style.width]="getProgreso" -->
+                            <span class="sr-only"> Complete (success)</span>
                         </div>
                     </div>
                     <!--  <div class="collapse m-t-15" id="pgr3"> <pre class="line-numbers language-javascript"><code>&lt;div class="progress"&gt;<br>&lt;div class="progress-bar bg-info progress-bar-striped" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width:85%;height:10px;"&gt; &lt;span class="sr-only"&gt;85% Complete&lt;/span&gt;&lt;/div&gt;<br>&lt;/div&gt;</code></pre>                        </div>
                      -->
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-body">
+                        <h4 class="card-title">Striped Progress bar 2</h4>
+                        <div class="progress m-t-20">
+                            <div class="progress-bar bg-info progress-bar-striped  active" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style=" height:10px;" role="progressbar" [style.width]="valorH2">
+                                <!-- [style.width]="getProgreso" -->
+                                <span class="sr-only"> Complete (success)</span>
+                            </div>
+                        </div>
+                        <div class="collapse m-t-15" id="pgr3"> <pre class="line-numbers language-javascript"><code>&lt;div class="progress"&gt;<br>&lt;div class="progress-bar bg-info progress-bar-striped" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width:85%;height:10px;"&gt; &lt;span class="sr-only"&gt;85% Complete&lt;/span&gt;&lt;/div&gt;<br>&lt;/div&gt;</code></pre>                            </div>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -19,15 +35,37 @@
     <div class="col-6">
         <div class="card">
             <div class="card-body">
+                <p>Mi progress 1</p>
+                <app-increment (newProg)="progreso1 = $event " [prog]="progreso1" [btnClase]="'btn-info'"></app-increment>
+                <!--
+                <div class="input-group ">
+                    <span class="input-group-btn ">
+                  <button (click) = "cambiaProgresoM() " class="btn btn-danger " type="button "> <i class="fa fa-minus " aria-hidden="true "></i> </button>
+                  </span>
+                    <input type="text " [placeholder]="progresoHtml " class="form-control " [(ngModel)]="progresoHtml ">
+                    <span class="input-group-btn ">
+                  <button (click) = "cambiaProgresom() " class="btn btn-success " type="button "> <i class="fa fa-plus " aria-hidden="true "></i></button>
+                  </span>
+                </div> -->
+                <!-- para limpiar el errore se deben importar modulos del router -->
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6 ">
+        <div class="card ">
+            <div class="card-body ">
                 <p>Mi progress 2</p>
-                <div class="input-group">
-                    <span class="input-group-btn">
-                    <button (click) = "cambiaProgreso(-5)" class="btn btn-danger" type="button"> <i class="fa fa-minus" aria-hidden="true"></i> </button>
-                    </span>
-                    <input type="text" [placeholder]="getProgreso" class="form-control">
-                    <span class="input-group-btn">
-                    <button (click) = "cambiaProgreso(5)" class="btn btn-success" type="button"> <i class="fa fa-plus" aria-hidden="true"></i></button>
-                    </span>
+                <app-increment (newProg)="progreso2 = $event " [prog]="progreso2" [btnClase]="'btn-danger'"></app-increment>
+                <!--  -->
+                <!--      <div class="input-group ">
+                    <span class="input-group-btn ">
+                  <button (click) = "cambiaProgresoM() " class="btn btn-danger " type="button "> <i class="fa fa-minus " aria-hidden="true "></i> </button>
+                  </span>
+                    <input type="text " [placeholder]="progresoHtml " class="form-control " [(ngModel)]="progresoHtml ">
+                    <span class="input-group-btn ">
+                  <button (click) = "cambiaProgresom() " class="btn btn-success " type="button "> <i class="fa fa-plus " aria-hidden="true "></i></button>
+                  </span>
                 </div>
                 <!-- para limpiar el errore se deben importar modulos del router -->
             </div>
