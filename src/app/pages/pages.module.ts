@@ -13,7 +13,6 @@ import { FormsModule } from '@angular/forms';
 import { ComponentModule } from '../component/component.module';
 
 
-
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -38,6 +37,7 @@ import { ComponentModule } from '../component/component.module';
     SharedModule,
     //IncrementComponent
     ComponentModule
+
   ]
 })
 export class PagesModule { }

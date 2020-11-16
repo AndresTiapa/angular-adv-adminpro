@@ -40,4 +40,13 @@ export class IncrementComponent implements OnInit {
     this.btnClase = `btn ${this.btnClase}`
   }
 
+  changer(valor:number) {
+    valor >= 100 ? valor =100:
+    valor <= 0 ? valor = 0:
+    valor = valor;
+
+    this.newProg.emit(valor);
+    console.log(valor);
+  }
+
 }

@@ -2,7 +2,7 @@
     <span class="input-group-btn">
                 <button (click) = "cambiaProgreso(-5)" [ngClass]="btnClase" type="button"> <i class="fa fa-minus" aria-hidden="true"></i> </button>
                 </span>
-    <input type="text" class="form-control" [(ngModel)]="progresoHtml">
+    <input type="text" class="form-control" [ngClass]="{'is-invalid': progresoHtml < 0 || progresoHtml > 100}" (ngModelChange)="changer($event)" [(ngModel)]="progresoHtml">
     <span class="input-group-btn">
                 <button (click) = "cambiaProgreso(5)" [ngClass]="btnClase" type="button"> <i class="fa fa-plus" aria-hidden="true"></i></button>
                 </span>
