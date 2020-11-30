@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { element } from 'protractor';
+import { SettingsService } from '../../service/settings.service';
 
 @Component({
   selector: 'app-account-settings',
@@ -8,34 +8,22 @@ import { element } from 'protractor';
   ]
 })
 export class AccountSettingsComponent implements OnInit {
-  public linkTheme = document.querySelector('#theme');
-  public labelsHtml:NodeListOf<Element>;//<Element>
-  constructor() { }
+ /*  public linkTheme = document.querySelector('#theme');
+  public labelsHtml:NodeListOf<Element>;//<Element> */
+
+  constructor(private settingsService:SettingsService) { }
 
   ngOnInit(): void {
-    this.labelsHtml = document.querySelectorAll('.selector');
-    this.checkkCurrentTheme();
+    // this.labelsHtml = document.querySelectorAll('.selector');
+    this.settingsService.checkkCurrentTheme();
 
   }
 
   changeTheme(tema:string) {
-    const url = `/assets/css/colors/${tema}.css`;
-
-    this.linkTheme.setAttribute('href',url);
-    localStorage.setItem('theme',url);
-    this.checkkCurrentTheme();
+    this.settingsService.changeTheme(tema);
+    //this.checkkCurrentTheme();
   }
 
-  checkkCurrentTheme() {
-    this.labelsHtml.forEach(label =>{
-      label.classList.remove('working');
-      const temaSeteado = label.getAttribute('data-theme');
-      const temaSeteadoUrl = `/assets/css/colors/${temaSeteado}.css`;
-      const linkThemehref = this.linkTheme.getAttribute('href');
-      if(temaSeteadoUrl ===   linkThemehref){
-        label.classList.add('working');
-      }
-    });
-  }
+
 
 }

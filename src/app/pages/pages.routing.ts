@@ -11,9 +11,6 @@ const routes: Routes = [
   {path: 'dashboard',
   component: PagesComponent,
   children: [
-    //{path: '', redirectTo: '/dashboard',  pathMatch: 'full'}
-    //Rutas Hijas que aparecerán después del slash "/"app-account-settings
-    //xd
     {path: '', component: DashboardComponent},
     {path: 'progress', component: ProgressComponent},
     {path: 'grafica1', component: Grafica1Component},
