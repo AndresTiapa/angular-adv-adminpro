@@ -7,6 +7,14 @@
     animation-fill-mode: both
 }
 
-#themecolors .selector {
+#themecolors .selector,
+.cursorLgo {
     cursor: pointer;
+}
+
+#google-btn {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
 }
