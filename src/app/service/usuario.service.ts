@@ -6,10 +6,12 @@ import { loginForm } from '../interface/login-form.interfaces';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
+import { Usuario } from '../models/usuario.model';
 
 const base_url = environment.base_url;
 
 declare const gapi: any;
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +20,20 @@ declare const gapi: any;
 export class UsuarioService {
 
   public auth2: any;
+  public usuario: Usuario;
 
   constructor(private httpClient : HttpClient,
               private router: Router,
               private ngZone: NgZone ) {
       this.googleInit();
+  }
+
+  get token(): string {
+    return localStorage.getItem('token') || '';
+  }
+
+  get uid():string {
+    return this.usuario.uid || '';
   }
 
   googleInit() {
@@ -54,17 +65,33 @@ export class UsuarioService {
   }
 
   validarToken(): Observable<boolean>{
-    const token = localStorage.getItem('token') || '';
+    //const token = localStorage.getItem('token') || '';
+
     return this.httpClient.get(`${ base_url }/login/renew`, {
       headers: {
-      'x-token': token
+      'x-token': this.token
     }
     }).pipe(
-      tap( (resp:any) => {
+      map( (resp: any) => {
+        console.log(resp);
+        const {
+          email,
+          google,
+          nombre,
+          role,
+          uid,
+          img = ''
+         } = resp.usuarioDBr;
+        this.usuario = new Usuario(nombre, email, '', img, google, role, uid);
+        //this.usuario.imprimirUsuario();
         localStorage.setItem('token', resp.token);
+        return true;
       }),
-      map( resp => true),
-      catchError( error => of(false) )
+      //map( resp => true),
+      catchError( error => {
+        console.log(error);
+        return of(false);
+      } )
     );
   }
 
@@ -76,6 +103,18 @@ export class UsuarioService {
                           localStorage.setItem('token', resp.token)
                           })
                         );
+  }
+
+  actualizarPerfil(data: { email:string, nombre:string, role:string}){
+    data= {
+      ...data,
+      role: this.usuario.role
+    }
+    return this.httpClient.put(`${ base_url }/usuarios/${this.uid}`, data,{
+      headers: {
+        'x-token': this.token
+      }
+    });
   }
 
 

@@ -8,12 +8,13 @@ import { Grafica1Component } from './grafica1.component';
 import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ComponentModule } from '../component/component.module';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     PagesComponent,
     AccountSettingsComponent,
     PromesasComponent,
-    RxjsComponent
+    RxjsComponent,
+    PerfilComponent
   ],
   exports: [
     CommonModule,
@@ -41,6 +43,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     AppRoutingModule,
     FormsModule,
     SharedModule,
+    ReactiveFormsModule,
     //IncrementComponent
     ComponentModule
 

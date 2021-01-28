@@ -18,3 +18,8 @@
     justify-content: center;
     display: flex;
 }
+
+.img-avatar {
+    width: 200px;
+    height: 200px;
+}
